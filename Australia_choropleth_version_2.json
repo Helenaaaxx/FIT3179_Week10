@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Death rate per 100,000 resident population of Australia caused by Ischaemic Heart Disease (2020)",
-  "width": 850,
+  "width": 700,
   "height": 600,
   "projection": {"type": "equalEarth"},
   "data": {
