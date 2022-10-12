@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Death rate per 100,000 resident population of Australia caused by Ischaemic Heart Disease (2020)",
+  "width": 850,
+  "height": 600,
+  "projection": {"type": "equalEarth"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/Helenaaaxx/FIT3179/main/Week_9_Homework/ne_10m_admin_1_states_provinces.json",
+    "format": {"type": "topojson", "feature": "My_Australia_States_Map_Final"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/Helenaaaxx/FIT3179/main/Week_9_Homework/final_homework_week9_dataset.csv"
+        },
+        "key": "States",
+        "fields": ["Rate"]
+      }
+    }
+  ],
+  "layer": [
+    {"mark": {"type": "geoshape", "stroke": "#000000", "strokeWidth": 0.5}},
+    {
+      "mark": "text",
+      "encoding": {
+        "text": {"field": "properties.name", "type": "nominal"},
+        "longitude": {"field": "properties.longitude", "type": "quantitative"},
+        "latitude": {"field": "properties.latitude", "type": "quantitative"},
+        "size": {"value": 10},
+        "opacity": {"value": 0.8},
+        "color": {"value": "black"}
+      }
+    }
+  ],
+  "encoding": {
+    "color": {
+      "field": "Rate",
+      "type": "quantitative",
+      "scale": {"scheme": "oranges"}
+    },
+    "tooltip": [
+      {"field": "properties.name", "type": "nominal", "title": "States"},
+      {"field": "Rate", "type": "quantitative", "format": ".1f"}
+    ]
+  }
+}

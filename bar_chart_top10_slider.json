@@ -1,0 +1,94 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "height": 600,
+  "width": 600,
+  "title": "Top 10 Underlying Causes of Deaths in Australia (2017-2020)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Helenaaaxx/FIT3179/main/Week_10_Homework/Dataset_Top10_Causes_of_Death_(2017-2020).csv"
+  },
+  "params": [
+    {
+      "name": "Year",
+      "value": 2017,
+      "bind": {
+        "input": "range",
+        "min": 2017,
+        "max": 2020,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "transform": [{"filter": "datum.Year == Year"}],
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "Number of Persons",
+          "type": "quantitative",
+          "title": "Number of Deaths"
+        },
+        "y": {
+          "field": "Causes of Death",
+          "type": "nominal",
+          "title": "Underlying Causes of Deaths",
+          "sort": "-x"
+        },
+        "color": {
+          "field": "Causes of Death",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Ischaemic heart diseases (I20-I25)",
+              "Malignant neoplasms of digestive organs  (C15-C26)",
+              "Cerebrovascular diseases (I60-I69)",
+              "Organic, including symptomatic, mental disorders (mostly dementia) (F00-F09)",
+              "Other forms of heart disease (I30-I52)",
+              "Malignant neoplasms of respiratory and intrathoracic organs  (C30-C39)",
+              "Chronic lower respiratory diseases (J40-J47)",
+              "Other degenerative diseases of the nervous system (mostly Alzheimer) (G30-G32)",
+              "Diabetes mellitus (E10-E14)",
+              "Malignant neoplasms, stated or presumed to be primary, of lymphoid, haematopoietic and related tissue (C81-C96)"
+            ],
+            "range": [
+              "#FFA511",
+              "#206AB2",
+              "#206AB2",
+              "#206AB2",
+              "#206AB2",
+              "#206AB2",
+              "#206AB2",
+              "#206AB2",
+              "#206AB2",
+              "#206AB2"
+            ]
+          }
+        },
+        "tooltip": [
+          {"field": "Causes of Death", "type": "nominal"},
+          {"field": "Number of Persons", "type": "quantitative", "format": ","},
+          {"field": "Year", "type": "ordinal"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "text": [
+          "Ischamic heart disease contributes to",
+          "greatest number of deaths over these years"
+        ],
+        "dx": 155,
+        "dy": -275,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "fontWeight": 100
+      }
+    }
+  ],
+  "config": {}
+}

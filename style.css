@@ -1,0 +1,26 @@
+html,
+body {
+    background-color: #F3FAF9;
+}
+
+.pure-u-1-2 {
+    margin-top: 50px;
+    height: 50vw;
+}
+
+h1 {
+    text-align: center;
+    color: #000000;
+    font-size: 40px;
+}
+
+#choropleth_map {
+	margin-left: 10px;
+	width: 90%;
+    height: 90%
+}
+
+#bar_chart {
+    width: 90%;
+    height: 90%
+}
